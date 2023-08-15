@@ -64421,6 +64421,11 @@ function is_china_domain(domain) {
   return !!dnsDomainIs(domain, ".cn");
 }
 
+function is_my_domain(domain) {
+  return !!dnsDomainIs(domain, ".my");
+}
+
+
 function match_domains(domain, domains) {
   let suffix;
   let pos = domain.lastIndexOf('.');
@@ -64457,6 +64462,9 @@ function FindProxyForURL(url, host) {
   }
 
   if (is_china_domain(host) === true) {
+    return direct;
+  }
+  if (is_my_domain(host) === true) {
     return direct;
   }
 
